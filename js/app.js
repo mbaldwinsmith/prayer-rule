@@ -73,7 +73,23 @@ function appendAmenButton() {
   container.appendChild(footer);
 }
 
-function renderOffice(name) {
+// ── Animations ─────────────────────────────────────────────
+function observePrayers() {
+  const prayerEls = document.querySelectorAll('#office .prayer');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = Array.from(prayerEls).indexOf(entry.target);
+        entry.target.style.animationDelay = `${Math.min(idx * 55, 220)}ms`;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.05 });
+  prayerEls.forEach(el => observer.observe(el));
+}
+
+function buildOfficeContent(name) {
   const container = document.getElementById('office');
   const psalmId = resolvePsalmId(name);
   container.innerHTML = '';
@@ -82,6 +98,20 @@ function renderOffice(name) {
     if (prayer) container.appendChild(renderPrayer(prayer));
   });
   appendAmenButton();
+  observePrayers();
+}
+
+function renderOffice(name) {
+  const container = document.getElementById('office');
+  if (!container.innerHTML.trim()) {
+    buildOfficeContent(name);
+    return;
+  }
+  container.classList.add('is-leaving');
+  setTimeout(() => {
+    buildOfficeContent(name);
+    container.classList.remove('is-leaving');
+  }, 250);
 }
 
 function setActiveOffice(name) {
