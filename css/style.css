@@ -167,6 +167,7 @@ header h1 {
   text-transform: uppercase;
   margin-bottom: 0.5rem;
   color: var(--text-muted);
+  text-align: center;
 }
 
 .prayer p,
@@ -178,6 +179,7 @@ header h1 {
 .rubric {
   font-style: italic;
   color: var(--text-dim);
+  text-align: center;
 }
 
 /* Line-break-sensitive content (poetry, psalm verses) */
