@@ -3,6 +3,30 @@ import { offices } from './offices.js';
 import { renderPrayer } from './render.js';
 import { morningPsalmId, eveningPsalmId } from './psalms.js';
 
+// ── Theme ──────────────────────────────────────────────────
+function defaultTheme() {
+  return new Date().getHours() >= 16 ? 'night' : 'day';
+}
+
+function applyTheme(name) {
+  if (name === 'night') {
+    document.documentElement.dataset.theme = 'night';
+  } else {
+    delete document.documentElement.dataset.theme;
+  }
+  const btn = document.getElementById('theme-toggle');
+  if (btn) btn.textContent = name === 'night' ? 'Day' : 'Night';
+}
+
+let currentTheme = defaultTheme();
+applyTheme(currentTheme);
+
+document.getElementById('theme-toggle').addEventListener('click', () => {
+  currentTheme = currentTheme === 'night' ? 'day' : 'night';
+  applyTheme(currentTheme);
+});
+
+// ── Office ─────────────────────────────────────────────────
 function defaultOffice() {
   return new Date().getHours() >= 16 ? 'evening' : 'morning';
 }
