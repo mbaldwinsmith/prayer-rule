@@ -158,3 +158,43 @@ header h1 {
   font-style: italic;
   color: var(--text-faint);
 }
+
+/* ── Streak display ───────────────────────────────────────── */
+#streak {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-top: 0.4rem;
+}
+
+/* ── Office footer / Amen button ──────────────────────────── */
+.office-footer {
+  text-align: center;
+  margin-top: 3rem;
+  padding-bottom: 2.5rem;
+}
+
+.amen-btn {
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--text-faint);
+  font: inherit;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+}
+
+.amen-btn:hover {
+  color: var(--text-muted);
+  border-bottom-color: var(--accent);
+}
+
+.amen-btn.amen-done {
+  color: var(--text-faint);
+  border-bottom-color: transparent;
+  cursor: default;
+}
