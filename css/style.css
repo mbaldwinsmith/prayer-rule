@@ -35,6 +35,38 @@
 [data-theme="night"][data-season="eastertide"]{ --accent: #e8c048; }
 [data-theme="night"][data-season="ordinary"]  { --accent: #68a878; }
 
+/* ── Transitions — theme and season swaps ─────────────────── */
+body {
+  transition: background-color 0.6s ease, color 0.6s ease;
+}
+
+.prayer h2,
+.rubric,
+.office-nav button,
+#theme-toggle,
+#streak,
+.amen-btn {
+  transition: color 0.4s ease, border-color 0.4s ease;
+}
+
+.prayer + .prayer::before {
+  transition: color 0.4s ease;
+}
+
+/* ── Prayer entry animation ──────────────────────────────── */
+@keyframes prayer-settle {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+
+.prayer {
+  opacity: 0;
+}
+
+.prayer.is-visible {
+  animation: prayer-settle 0.5s ease forwards;
+}
+
 /* ── Reset ────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -197,4 +229,27 @@ header h1 {
   color: var(--text-faint);
   border-bottom-color: transparent;
   cursor: default;
+}
+
+/* ── Office content transition ───────────────────────────── */
+#office {
+  transition: opacity 0.25s ease;
+}
+
+#office.is-leaving {
+  opacity: 0;
+}
+
+/* ── Reduced motion ──────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  /* Ensure prayers are visible even without animation */
+  .prayer {
+    opacity: 1;
+  }
 }
