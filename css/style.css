@@ -145,6 +145,26 @@ header h1 {
   color: var(--text-muted);
 }
 
+/* ── Install button ───────────────────────────────────────── */
+#install-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: none;
+  border: none;
+  font: inherit;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  cursor: pointer;
+  padding: 0.25rem 0;
+}
+
+#install-btn:hover {
+  color: var(--text-muted);
+}
+
 /* ── Prayer blocks ────────────────────────────────────────── */
 .prayer {
   margin-bottom: 2.5rem;
