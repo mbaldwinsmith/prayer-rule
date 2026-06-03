@@ -4,8 +4,6 @@
 //   { type: 'rubric',    text }         — liturgical instruction, rendered italic/muted
 //   { type: 'paragraph', text }         — prose block
 //   { type: 'lines',     lines: [] }    — line-break-sensitive content (poetry, psalm verses)
-//
-// Stubs (body: []) will be filled in Phase 4.
 
 export const prayers = {
 
@@ -54,12 +52,22 @@ export const prayers = {
     ],
   },
 
-  // ── Lord's Prayer (stub — Phase 4) ───────────────────────────────────────
+  // ── Lord's Prayer ────────────────────────────────────────────────────────
 
   'lords-prayer': {
     id: 'lords-prayer',
     title: "Lord's Prayer",
-    body: [],
+    body: [
+      { type: 'lines', lines: [
+        'Our Father in heaven, hallowed be Your name.',
+        'Your kingdom come.',
+        'Your will be done on earth as it is in heaven.',
+        'Give us this day our daily bread.',
+        'And forgive us our debts, as we forgive our debtors.',
+        'And do not lead us into temptation, but deliver us from the evil one.',
+        'For Yours is the kingdom and the power and the glory forever. Amen.',
+      ]},
+    ],
   },
 
   // ── Doxology ──────────────────────────────────────────────────────────────
@@ -101,12 +109,14 @@ export const prayers = {
     ],
   },
 
-  // ── Jesus Prayer (stub — Phase 4) ────────────────────────────────────────
+  // ── Jesus Prayer ─────────────────────────────────────────────────────────
 
   'jesus-prayer': {
     id: 'jesus-prayer',
     title: 'Jesus Prayer',
-    body: [],
+    body: [
+      { type: 'paragraph', text: 'Lord Jesus Christ, Son of God, have mercy on me, a sinner.' },
+    ],
   },
 
   // ── Daily Morning Psalms ──────────────────────────────────────────────────
@@ -308,12 +318,27 @@ export const prayers = {
     ],
   },
 
-  // ── Ten Commandments (stub — Phase 4) ────────────────────────────────────
+  // ── Ten Commandments ─────────────────────────────────────────────────────
 
   'ten-commandments': {
     id: 'ten-commandments',
     title: 'Ten Commandments (NKJV)',
-    body: [],
+    body: [
+      { type: 'rubric', text: 'Exodus 20:1–17' },
+      { type: 'lines', lines: [
+        'I am the Lord your God, who brought you out of the land of Egypt, out of the house of bondage. You shall have no other gods before Me.',
+        'You shall not make for yourself a carved image — any likeness of anything that is in heaven above, or that is in the earth beneath, or that is in the water under the earth; you shall not bow down to them nor serve them. For I, the Lord your God, am a jealous God, visiting the iniquity of the fathers upon the children to the third and fourth generations of those who hate Me, but showing mercy to thousands, to those who love Me and keep My commandments.',
+        'You shall not take the name of the Lord your God in vain, for the Lord will not hold him guiltless who takes His name in vain.',
+        'Remember the Sabbath day, to keep it holy. Six days you shall labor and do all your work, but the seventh day is the Sabbath of the Lord your God. In it you shall do no work: you, nor your son, nor your daughter, nor your male servant, nor your female servant, nor your cattle, nor your stranger who is within your gates. For in six days the Lord made the heavens and the earth, the sea, and all that is in them, and rested the seventh day. Therefore the Lord blessed the Sabbath day and hallowed it.',
+        'Honor your father and your mother, that your days may be long upon the land which the Lord your God is giving you.',
+        'You shall not murder.',
+        'You shall not commit adultery.',
+        'You shall not steal.',
+        'You shall not bear false witness against your neighbor.',
+        'You shall not covet your neighbor\'s house; you shall not covet your neighbor\'s wife, nor his male servant, nor his female servant, nor his ox, nor his donkey, nor anything that is your neighbor\'s.',
+      ]},
+      { type: 'paragraph', text: 'Glory to the Father and to the Son and to the Holy Spirit, now and ever and unto ages of ages. Amen.' },
+    ],
   },
 
   // ── Psalm 50 (51) ─────────────────────────────────────────────────────────
@@ -347,12 +372,26 @@ export const prayers = {
     ],
   },
 
-  // ── Beatitudes (stub — Phase 4) ──────────────────────────────────────────
+  // ── Beatitudes ───────────────────────────────────────────────────────────
 
   'beatitudes': {
     id: 'beatitudes',
     title: 'Beatitudes (NKJV)',
-    body: [],
+    body: [
+      { type: 'rubric', text: 'Matthew 5:3–12' },
+      { type: 'lines', lines: [
+        'Blessed are the poor in spirit, for theirs is the kingdom of heaven.',
+        'Blessed are those who mourn, for they shall be comforted.',
+        'Blessed are the meek, for they shall inherit the earth.',
+        'Blessed are those who hunger and thirst for righteousness, for they shall be filled.',
+        'Blessed are the merciful, for they shall obtain mercy.',
+        'Blessed are the pure in heart, for they shall see God.',
+        'Blessed are the peacemakers, for they shall be called sons of God.',
+        'Blessed are those who are persecuted for righteousness\' sake, for theirs is the kingdom of heaven.',
+        'Blessed are you when they revile and persecute you, and say all kinds of evil against you falsely for My sake. Rejoice and be exceedingly glad, for great is your reward in heaven, for so they persecuted the prophets who were before you.',
+      ]},
+      { type: 'paragraph', text: 'Glory to the Father and to the Son and to the Holy Spirit, now and ever and unto ages of ages. Amen.' },
+    ],
   },
 
   // ── It Is Truly Meet ──────────────────────────────────────────────────────
@@ -366,20 +405,52 @@ export const prayers = {
     ],
   },
 
-  // ── Magnificat (stub — Phase 4) ──────────────────────────────────────────
+  // ── Magnificat ───────────────────────────────────────────────────────────
 
   'magnificat': {
     id: 'magnificat',
     title: 'Magnificat (NKJV)',
-    body: [],
+    body: [
+      { type: 'rubric', text: 'Luke 1:46–55' },
+      { type: 'lines', lines: [
+        'My soul magnifies the Lord,',
+        'And my spirit has rejoiced in God my Savior.',
+        'For He has regarded the lowly state of His maidservant; for behold, henceforth all generations will call me blessed.',
+        'For He who is mighty has done great things for me, and holy is His name.',
+        'And His mercy is on those who fear Him from generation to generation.',
+        'He has shown strength with His arm; He has scattered the proud in the imagination of their hearts.',
+        'He has put down the mighty from their thrones, and exalted the lowly.',
+        'He has filled the hungry with good things, and the rich He has sent away empty.',
+        'He has helped His servant Israel, in remembrance of His mercy,',
+        'As He spoke to our fathers, to Abraham and to his seed forever.',
+      ]},
+      { type: 'paragraph', text: 'Glory to the Father and to the Son and to the Holy Spirit, now and ever and unto ages of ages. Amen.' },
+    ],
   },
 
-  // ── Benedictus (stub — Phase 4) ──────────────────────────────────────────
+  // ── Benedictus ───────────────────────────────────────────────────────────
 
   'benedictus': {
     id: 'benedictus',
     title: 'Benedictus (NKJV)',
-    body: [],
+    body: [
+      { type: 'rubric', text: 'Luke 1:68–79' },
+      { type: 'lines', lines: [
+        'Blessed is the Lord God of Israel, for He has visited and redeemed His people,',
+        'And has raised up a horn of salvation for us in the house of His servant David,',
+        'As He spoke by the mouth of His holy prophets, who have been since the world began,',
+        'That we should be saved from our enemies and from the hand of all who hate us,',
+        'To perform the mercy promised to our fathers and to remember His holy covenant,',
+        'The oath which He swore to our father Abraham:',
+        'To grant us that we, being delivered from the hand of our enemies, might serve Him without fear,',
+        'In holiness and righteousness before Him all the days of our life.',
+        'And you, child, will be called the prophet of the Highest; for you will go before the face of the Lord to prepare His ways,',
+        'To give knowledge of salvation to His people by the remission of their sins,',
+        'Through the tender mercy of our God, with which the Dayspring from on high has visited us;',
+        'To give light to those who sit in darkness and the shadow of death, to guide our feet into the way of peace.',
+      ]},
+      { type: 'paragraph', text: 'Glory to the Father and to the Son and to the Holy Spirit, now and ever and unto ages of ages. Amen.' },
+    ],
   },
 
   // ── Evening Dismissal ─────────────────────────────────────────────────────
