@@ -3,6 +3,7 @@ import { offices } from './offices.js';
 import { renderPrayer } from './render.js';
 import { morningPsalmId, eveningPsalmId } from './psalms.js';
 import { currentSeason } from './seasons.js';
+import { recordCompletion, getStreak, hasCompletedToday } from './streak.js';
 
 // ── Season ─────────────────────────────────────────────────
 document.documentElement.dataset.season = currentSeason();
@@ -39,6 +40,39 @@ function resolvePsalmId(office) {
   return office === 'morning' ? morningPsalmId() : eveningPsalmId();
 }
 
+// ── Streak ─────────────────────────────────────────────────
+function updateStreakDisplay() {
+  const el = document.getElementById('streak');
+  if (!el) return;
+  const n = getStreak();
+  el.textContent = n > 0 ? `${n} ${n === 1 ? 'day' : 'days'}` : '';
+  el.hidden = n === 0;
+}
+
+function appendAmenButton() {
+  const container = document.getElementById('office');
+  const footer = document.createElement('div');
+  footer.className = 'office-footer';
+
+  const btn = document.createElement('button');
+  btn.className = 'amen-btn';
+  const done = hasCompletedToday();
+  btn.textContent = done ? 'Amen ✓' : 'Amen';
+  btn.setAttribute('aria-pressed', done ? 'true' : 'false');
+  if (done) btn.classList.add('amen-done');
+
+  btn.addEventListener('click', () => {
+    recordCompletion();
+    btn.textContent = 'Amen ✓';
+    btn.classList.add('amen-done');
+    btn.setAttribute('aria-pressed', 'true');
+    updateStreakDisplay();
+  });
+
+  footer.appendChild(btn);
+  container.appendChild(footer);
+}
+
 function renderOffice(name) {
   const container = document.getElementById('office');
   const psalmId = resolvePsalmId(name);
@@ -47,6 +81,7 @@ function renderOffice(name) {
     const prayer = prayers[id === 'psalm-daily' ? psalmId : id];
     if (prayer) container.appendChild(renderPrayer(prayer));
   });
+  appendAmenButton();
 }
 
 function setActiveOffice(name) {
@@ -58,6 +93,7 @@ function setActiveOffice(name) {
 }
 
 setActiveOffice(defaultOffice());
+updateStreakDisplay();
 
 document.querySelector('.office-nav').addEventListener('click', e => {
   const btn = e.target.closest('[data-office]');
