@@ -1,24 +1,22 @@
 import { prayers } from '../data/prayers.js';
 import { offices } from './offices.js';
 import { renderPrayer } from './render.js';
-
-const VARIABLE_SLOTS = {
-  'psalm-daily': {
-    id: 'psalm-daily',
-    title: 'Psalm of the Day',
-    body: [],
-  },
-};
+import { morningPsalmId, eveningPsalmId } from './psalms.js';
 
 function defaultOffice() {
   return new Date().getHours() >= 16 ? 'evening' : 'morning';
 }
 
+function resolvePsalmId(office) {
+  return office === 'morning' ? morningPsalmId() : eveningPsalmId();
+}
+
 function renderOffice(name) {
   const container = document.getElementById('office');
+  const psalmId = resolvePsalmId(name);
   container.innerHTML = '';
   offices[name].forEach(id => {
-    const prayer = prayers[id] ?? VARIABLE_SLOTS[id];
+    const prayer = prayers[id === 'psalm-daily' ? psalmId : id];
     if (prayer) container.appendChild(renderPrayer(prayer));
   });
 }
