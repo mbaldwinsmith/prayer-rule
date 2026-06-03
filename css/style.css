@@ -25,8 +25,47 @@ header h1 {
   text-transform: uppercase;
 }
 
+.office-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 0.75rem;
+}
+
+.office-nav button {
+  background: none;
+  border: none;
+  border-bottom: 1px solid transparent;
+  font: inherit;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #999;
+  cursor: pointer;
+  padding: 0.2rem 0;
+}
+
+.office-nav button:hover {
+  color: #555;
+}
+
+.office-nav button.active {
+  color: #1a1a1a;
+  border-bottom-color: #1a1a1a;
+}
+
 /* Each prayer block */
 .prayer {
+  margin-bottom: 2.5rem;
+}
+
+/* Subtle ornament between consecutive prayer sections */
+.prayer + .prayer::before {
+  content: '✦';
+  display: block;
+  text-align: center;
+  color: #ccc;
+  font-size: 0.7rem;
   margin-bottom: 2rem;
 }
 
