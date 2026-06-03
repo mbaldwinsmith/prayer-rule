@@ -7,6 +7,7 @@
   --text-faint: #c9b8a0;
   --ornament:   #c9b8a0;
   --active:     #3d2b1f;
+  --accent:     #3d2b1f;
 }
 
 /* ── Night palette ────────────────────────────────────────── */
@@ -18,7 +19,21 @@
   --text-faint: #3a2f22;
   --ornament:   #4a3828;
   --active:     #8a6a48;
+  --accent:     #8a6a48;
 }
+
+/* ── Seasonal accents ─────────────────────────────────────── */
+[data-season="advent"]    { --accent: #6e5497; }
+[data-season="christmas"] { --accent: #b08018; }
+[data-season="lent"]      { --accent: #6a4282; }
+[data-season="eastertide"]{ --accent: #c49010; }
+[data-season="ordinary"]  { --accent: #3d7050; }
+
+[data-theme="night"][data-season="advent"]    { --accent: #a088c8; }
+[data-theme="night"][data-season="christmas"] { --accent: #d4a840; }
+[data-theme="night"][data-season="lent"]      { --accent: #9878b8; }
+[data-theme="night"][data-season="eastertide"]{ --accent: #e8c048; }
+[data-theme="night"][data-season="ordinary"]  { --accent: #68a878; }
 
 /* ── Reset ────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -75,7 +90,7 @@ header h1 {
 
 .office-nav button.active {
   color: var(--text);
-  border-bottom-color: var(--active);
+  border-bottom-color: var(--accent);
 }
 
 /* ── Theme toggle ─────────────────────────────────────────── */

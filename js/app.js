@@ -2,6 +2,10 @@ import { prayers } from '../data/prayers.js';
 import { offices } from './offices.js';
 import { renderPrayer } from './render.js';
 import { morningPsalmId, eveningPsalmId } from './psalms.js';
+import { currentSeason } from './seasons.js';
+
+// ── Season ─────────────────────────────────────────────────
+document.documentElement.dataset.season = currentSeason();
 
 // ── Theme ──────────────────────────────────────────────────
 function defaultTheme() {
