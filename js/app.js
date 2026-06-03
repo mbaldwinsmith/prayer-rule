@@ -132,8 +132,22 @@ document.querySelector('.office-nav').addEventListener('click', e => {
 
 // ── Service Worker ──────────────────────────────────────────
 if ('serviceWorker' in navigator) {
+  const hadController = !!navigator.serviceWorker.controller;
+  let reloading = false;
+
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./sw.js').catch(() => {});
+
+    // When a new SW takes control, show the update banner (skip on first install)
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (!hadController || reloading) return;
+      document.getElementById('update-banner').hidden = false;
+    });
+  });
+
+  document.getElementById('update-reload').addEventListener('click', () => {
+    reloading = true;
+    window.location.reload();
   });
 }
 
