@@ -1,21 +1,44 @@
-/* Baseline readability — theming and aesthetics in Phase 5. */
+/* ── Day palette ──────────────────────────────────────────── */
+:root {
+  --bg:         #f5ede0;
+  --text:       #1c1209;
+  --text-muted: #6b5840;
+  --text-dim:   #9e8870;
+  --text-faint: #c9b8a0;
+  --ornament:   #c9b8a0;
+  --active:     #3d2b1f;
+}
 
+/* ── Night palette ────────────────────────────────────────── */
+[data-theme="night"] {
+  --bg:         #140e08;
+  --text:       #c8b898;
+  --text-muted: #8a7458;
+  --text-dim:   #5a4838;
+  --text-faint: #3a2f22;
+  --ornament:   #4a3828;
+  --active:     #8a6a48;
+}
+
+/* ── Reset ────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: Palatino, 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
   font-size: 1.125rem;
   line-height: 1.7;
   max-width: 40rem;
   margin: 2rem auto;
   padding: 0 1.25rem;
-  color: #1a1a1a;
-  background: #fdfaf4;
+  color: var(--text);
+  background: var(--bg);
 }
 
+/* ── Header ───────────────────────────────────────────────── */
 header {
   text-align: center;
   margin-bottom: 2.5rem;
+  position: relative;
 }
 
 header h1 {
@@ -23,6 +46,7 @@ header h1 {
   font-weight: normal;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  color: var(--text-muted);
 }
 
 .office-nav {
@@ -40,21 +64,41 @@ header h1 {
   font-size: 0.8rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #999;
+  color: var(--text-dim);
   cursor: pointer;
   padding: 0.2rem 0;
 }
 
 .office-nav button:hover {
-  color: #555;
+  color: var(--text-muted);
 }
 
 .office-nav button.active {
-  color: #1a1a1a;
-  border-bottom-color: #1a1a1a;
+  color: var(--text);
+  border-bottom-color: var(--active);
 }
 
-/* Each prayer block */
+/* ── Theme toggle ─────────────────────────────────────────── */
+#theme-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: none;
+  border: none;
+  font: inherit;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  cursor: pointer;
+  padding: 0.25rem 0;
+}
+
+#theme-toggle:hover {
+  color: var(--text-muted);
+}
+
+/* ── Prayer blocks ────────────────────────────────────────── */
 .prayer {
   margin-bottom: 2.5rem;
 }
@@ -64,7 +108,7 @@ header h1 {
   content: '✦';
   display: block;
   text-align: center;
-  color: #ccc;
+  color: var(--ornament);
   font-size: 0.7rem;
   margin-bottom: 2rem;
 }
@@ -75,7 +119,7 @@ header h1 {
   letter-spacing: 0.05em;
   text-transform: uppercase;
   margin-bottom: 0.5rem;
-  color: #555;
+  color: var(--text-muted);
 }
 
 .prayer p,
@@ -86,7 +130,7 @@ header h1 {
 /* Liturgical instructions */
 .rubric {
   font-style: italic;
-  color: #888;
+  color: var(--text-dim);
 }
 
 /* Line-break-sensitive content (poetry, psalm verses) */
@@ -97,5 +141,5 @@ header h1 {
 /* Stubs and variable slots */
 .placeholder {
   font-style: italic;
-  color: #aaa;
+  color: var(--text-faint);
 }
