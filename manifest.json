@@ -3,6 +3,7 @@
   "short_name": "Prayer",
   "description": "A personal Orthodox morning and evening prayer rule.",
   "start_url": ".",
+  "scope": ".",
   "display": "standalone",
   "background_color": "#f5efe0",
   "theme_color": "#f5efe0",
