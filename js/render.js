@@ -6,6 +6,18 @@ function renderBlock(block) {
     return el;
   }
   if (block.type === 'paragraph') {
+    const match = block.text.match(/^([\s\S]+?)\((\d+)\)$/);
+    if (match) {
+      const text = match[1].trimEnd();
+      const count = parseInt(match[2], 10);
+      const frag = document.createDocumentFragment();
+      for (let i = 0; i < count; i++) {
+        const el = document.createElement('p');
+        el.textContent = text;
+        frag.appendChild(el);
+      }
+      return frag;
+    }
     const el = document.createElement('p');
     el.textContent = block.text;
     return el;
