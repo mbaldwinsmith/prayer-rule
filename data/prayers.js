@@ -28,6 +28,25 @@ export const prayers = {
     ],
   },
 
+  // ── Seven Bow Beginning ───────────────────────────────────────────────────
+
+  'seven-bow-beginning': {
+    id: 'seven-bow-beginning',
+    title: 'Seven Bow Beginning',
+    body: [
+      { type: 'rubric', text: 'Make a bow at each, with the sign of the Cross:' },
+      { type: 'lines', lines: [
+        'O God, be merciful to me a sinner. (bow)',
+        'O God, cleanse my sins and have mercy on me. (bow)',
+        'You who created me, O Lord, have mercy. (bow)',
+        'Without number have I sinned, O Lord, have mercy on me. (bow)',
+        'My Lady, most holy Theotokos, save me a sinner. (bow)',
+        'O Angel of Christ, my holy guardian, preserve me. (bow)',
+        'Holy Martyr Ignatius of Antioch, pray to God for me. (bow)',
+      ]},
+    ],
+  },
+
   // ── Prayer to the Holy Spirit ─────────────────────────────────────────────
 
   'holy-spirit': {

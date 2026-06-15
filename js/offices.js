@@ -5,6 +5,7 @@ export const offices = {
   morning: [
     'morning-rubric',
     'morning-opening',
+    'seven-bow-beginning',
     'holy-spirit',
     'trisagion',
     'lords-prayer',
@@ -16,6 +17,7 @@ export const offices = {
   ],
   evening: [
     'evening-rubric',
+    'seven-bow-beginning',
     'psalm-daily',
     'ten-commandments',
     'psalm-50',
